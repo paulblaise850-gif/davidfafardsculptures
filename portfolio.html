@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio | David Fafard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h1>David Fafard</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="gallery" id="gallery">
+  <!-- Images will load here automatically -->
+</section>
+
+<script>
+// --------------- CONFIG ---------------- //
+// List your image filenames here:
+const images = [
+  'bronze1.jpg',
+  'marble1.jpg',
+  'gold1.jpg',
+  'gemstone1.jpg',
+  'animal1.jpg',
+  'abstract1.jpg',
+  // Add more filenames here as you upload
+];
+
+// --------------- AUTO-GENERATE ---------------- //
+const gallery = document.getElementById('gallery');
+
+images.forEach(img => {
+  const imageElement = document.createElement('img');
+  imageElement.src = 'images/' + img;
+  imageElement.alt = img.split('.')[0]; // optional alt text
+  gallery.appendChild(imageElement);
+});
+</script>
+
+<footer>© 2025 David Fafard Sculptures</footer>
+</body>
+</html>
