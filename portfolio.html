@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio | David Fafard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h1>David Fafard</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="gallery" id="gallery">
+  <!-- Images will load here automatically -->
+</section>
+
+<script>
+const gallery = document.getElementById('gallery');
+
+// Automatically fetch the GitHub folder listing
+fetch('images/')
+  .then(response => response.text())
+  .then(data => {
+    // Parse the HTML of the folder listing
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, 'text/html');
+    const links = Array.from(doc.querySelectorAll('a'))
+      .map(a => a.getAttribute('href'))
+      .filter(href => href.match(/\.(jpg|jpeg|png|gif)$/i)); // only images
+
+    // Add each image to the gallery
+    links.forEach(img => {
+      const imageElement = document.createElement('img');
+      imageElement.src = 'images/' + img;
+      imageElement.alt = img.split('.')[0];
+      gallery.appendChild(imageElement);
+    });
+  })
+  .catch(err => console.error('Error loading images:', err));
+</script>
+
+<footer>© 2025 David Fafard Sculptures</footer>
+</body>
+</html>
