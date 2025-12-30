@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Portfolio | David Fafard</title>
-
   <style>
+    /* =======================
+       GENERAL STYLES
+    ======================= */
     * {
       margin: 0;
       padding: 0;
@@ -18,6 +20,9 @@
       min-height: 100vh;
     }
 
+    /* =======================
+       NAVIGATION
+    ======================= */
     nav {
       display: flex;
       justify-content: space-between;
@@ -27,36 +32,50 @@
       position: fixed;
       width: 100%;
       z-index: 10;
+      font-weight: 700;
     }
 
-    nav h1 {
-      font-size: 1.4rem;
+    nav h1 a {
+      font-size: 1.6rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav h1 a:hover {
+      color: #f0a500;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
     }
 
-    nav a {
+    nav ul a {
       text-decoration: none;
       color: #ffffff;
-      opacity: 0.8;
-      transition: opacity 0.3s;
+      font-weight: 700;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      transition: opacity 0.3s, color 0.3s;
     }
 
-    nav a:hover {
+    nav ul a:hover {
       opacity: 1;
+      color: #f0a500;
     }
 
+    /* =======================
+       SLIDESHOW
+    ======================= */
     .slideshow-container {
       height: 100vh;
       width: 100%;
       position: relative;
       overflow: hidden;
+      margin-top: 80px; /* for fixed nav */
     }
 
     .slide {
@@ -95,6 +114,7 @@
       padding: 12px 20px;
       cursor: pointer;
       transition: background 0.3s;
+      border-radius: 6px;
     }
 
     .controls button:hover {
@@ -104,24 +124,46 @@
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       background: #000;
-      opacity: 0.7;
+      opacity: 0.8;
+      margin-top: 40px;
+    }
+
+    /* =======================
+       RESPONSIVE
+    ======================= */
+    @media screen and (max-width: 900px) {
+      nav h1 a {
+        font-size: 1.4rem;
+      }
+      nav ul a {
+        font-size: 1rem;
+      }
+      .controls button {
+        font-size: 1.2rem;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-  <h1>David Fafard</h1>
+  <h1>
+    <a href="about.html">🗿 David Fafard</a>
+  </h1>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
+<!-- SLIDESHOW -->
 <section class="slideshow-container" id="slideshow"></section>
 
 <div class="controls">
@@ -139,13 +181,13 @@
     "IMG_0016.PNG",
     "IMG_0019.jpg",
     "IMG_0020.PNG",
-    "IMG001.JPG" ,
-    "IMG002.JPG" ,
-     "AA1.jpg" ,
-     "AA2.JPG" ,
-     "AA3.jpeg" ,
-     "AA4.JPG" ,
-     "AA5.JPG" ,
+    "IMG001.JPG",
+    "IMG002.JPG",
+    "AA1.jpg",
+    "AA2.JPG",
+    "AA3.jpeg",
+    "AA4.JPG",
+    "AA5.JPG",
     "IMG_0022PNG"
   ];
 
@@ -176,7 +218,7 @@
     showSlide(currentIndex);
   });
 
-  // Auto-play
+  // Auto-play every 6 seconds
   setInterval(() => {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
@@ -185,4 +227,5 @@
 
 </body>
 </html>
+
 
